@@ -87,7 +87,7 @@ namespace Hooks
 		static void install()
 		{
 			REL::Relocation<std::uintptr_t> AttackBlockHandlerVtbl{ RE::VTABLE_AttackBlockHandler[0] };
-			_ProcessButton = AttackBlockHandlerVtbl.write_vfunc(0x4, ProcessButton);
+			_ProcessButton = AttackBlockHandlerVtbl.write_vfunc(REL::Module::get().version() >= SKSE::RUNTIME_SSE_1_7_99 ? 0x6 : 0x4, ProcessButton);
 		}
 
 	private:

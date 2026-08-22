@@ -72,7 +72,7 @@ namespace VAL_API
 	/// <returns>The pointer to the API singleton, or nullptr if request failed</returns>
 	[[nodiscard]] inline void* RequestPluginAPI(const InterfaceVersion a_interfaceVersion = InterfaceVersion::V1)
 	{
-		auto pluginHandle = GetModuleHandle(L"ValhallaCombat.dll");
+		auto pluginHandle = GetModuleHandleW(L"ValhallaCombat.dll");
 		_RequestPluginAPI requestAPIFunction = (_RequestPluginAPI)GetProcAddress(pluginHandle, "RequestPluginAPI");
 		if (requestAPIFunction) {
 			return requestAPIFunction(a_interfaceVersion);
